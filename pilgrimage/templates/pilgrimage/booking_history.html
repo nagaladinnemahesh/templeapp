@@ -4,6 +4,15 @@
 
 {% block content %}
     <h1>Booking History</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <ul>
         {% for pilgrim in pilgrims %}
             <li>{{ pilgrim.name }} - {{ pilgrim.service }} - {{ pilgrim.date_of_visit }}</li>

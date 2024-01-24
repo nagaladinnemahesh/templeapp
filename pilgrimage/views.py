@@ -74,7 +74,7 @@ def book_ticket(request):
         service = request.POST.get('service')
 
         # Create a new booking
-        Booking.objects.create(
+        booking = Booking.objects.create(
             user=request.user,
             name=name,
             email=email,
@@ -82,8 +82,11 @@ def book_ticket(request):
             service=service
         )
 
-        messages.success(request, 'Ticket booked successfully!')
-        return redirect('pilgrimage:booking_history')  # Redirect to booking history after booking
+        # Add a success message
+        messages.success(request, 'Ticket booked successfully! Your booking ID is {}'.format(booking.id))
+
+        # Redirect to booking history after booking
+        return redirect('pilgrimage:booking_history')
 
     return render(request, 'pilgrimage/book_ticket.html')
 

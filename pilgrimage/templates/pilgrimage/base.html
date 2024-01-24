@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pilgrimage App{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'pilgrimage/css/styles.css' %}">
+    {% block additional_css %}{% endblock %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'pilgrimage:homepage' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'pilgrimage:profile' %}">Profile</a></li>
+                <li><a href="{% url 'pilgrimage:about' %}">About</a></li>
+                <li><a href="{% url 'pilgrimage:book_ticket' %}">Book Ticket</a></li>
+                <li><a href="{% url 'pilgrimage:booking_history' %}">Booking History</a></li>
+                <li>Hello, {{ user.username }} (<a href="{% url 'pilgrimage:logout' %}">Logout</a>)</li>
+            {% else %}
+                <li><a href="{% url 'pilgrimage:user_login' %}">Login</a></li>
+                <li><a href="{% url 'pilgrimage:register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

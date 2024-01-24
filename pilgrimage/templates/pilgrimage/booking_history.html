@@ -1,0 +1,12 @@
+{% extends 'pilgrimage/base.html' %}
+
+{% block title %}Booking History{% endblock %}
+
+{% block content %}
+    <h1>Booking History</h1>
+    <ul>
+        {% for pilgrim in pilgrims %}
+            <li>{{ pilgrim.name }} - {{ pilgrim.service }} - {{ pilgrim.date_of_visit }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

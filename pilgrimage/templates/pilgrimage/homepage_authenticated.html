@@ -1,0 +1,14 @@
+{% extends 'pilgrimage/base.html' %}
+
+{% block title %}Pilgrimage App{% endblock %}
+
+{% block content %}
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>Explore the options:</p>
+    <ul>
+        <li><a href="{% url 'pilgrimage:profile' %}">Profile</a></li>
+        <li><a href="{% url 'pilgrimage:booking_history' %}">Booking History</a></li>
+        <li><a href="{% url 'pilgrimage:book_ticket' %}">Book Ticket</a></li>
+        <li><a href="{% url 'pilgrimage:logout' %}">Logout</a></li>
+    </ul>
+{% endblock %}

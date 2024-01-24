@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pilgrim List</title>
+</head>
+<body>
+    <h1>Pilgrim List</h1>
+    <ul>
+        {% for pilgrim in pilgrims %}
+            <li>{{ pilgrim.name }} - {{ pilgrim.service }} - {{ pilgrim.date_of_visit }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

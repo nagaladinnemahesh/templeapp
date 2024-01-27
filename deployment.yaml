@@ -1,0 +1,20 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: templeapp-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: templeapp
+  template:
+    metadata:
+      labels:
+        app: templeapp
+    spec:
+      containers:
+      - name: templeapp-container
+        image: mahesh0404/templeapp:simpleDF
+        ports:
+        - containerPort: 8000

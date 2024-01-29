@@ -1,26 +1,69 @@
+<!-- pilgrimage/templates/pilgrimage/book_ticket.html -->
+
 {% extends 'pilgrimage/base.html' %}
 
 {% block title %}Book Ticket{% endblock %}
 
-{% block content %}
-    <h1>Book Ticket</h1>
-    <form method="post" action="{% url 'pilgrimage:book_ticket' %}">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" name="name" required><br>
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
-        <label for="date_of_visit">Date of Visit:</label>
-        <input type="date" name="date_of_visit" required><br>
-        <label for="service">Select Service:</label>
-        <select name="service" required>
-            <option value="Suprabatha">Suprabatha</option>
-            <option value="Angapradakshina">Angapradakshina</option>
-            <option value="Thomala">Thomala</option>
-            <option value="Kalyanam">Kalyanam</option>
-            <option value="Bramhotsavam">Bramhotsavam</option>
-        </select><br>
-        <button type="submit">Book Ticket</button>
-    </form>
+{% block additional_css %}
+    <style>
+        /* Additional styles for the Book Ticket page */
+        .book-ticket-form {
+            background-color: #fcfcfc; /* Light background color */
+            padding: 20px;
+            margin-top: 70px; /* Adjusted margin for content below the navbar */
+            max-width: 600px; /* Limit the width of the form */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            color: #333; /* Dark text color */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555; /* Slightly darker text color */
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 {% endblock %}
 
+{% block content %}
+  <div class="book-ticket-form">
+    <h1>Book Ticket</h1>
+    <form method="post" action="{% url 'pilgrimage:book_ticket' %}">
+      {% csrf_token %}
+      <label for="name">Name:</label>
+      <input type="text" name="name" required><br>
+      <label for="email">Email:</label>
+      <input type="email" name="email" required><br>
+      <label for="date_of_visit">Date of Visit:</label>
+      <input type="date" name="date_of_visit" required><br>
+      <label for="service">Select Service:</label>
+      <select name="service" required>
+        <option value="Suprabatha">Suprabatha</option>
+        <option value="Angapradakshina">Angapradakshina</option>
+        <option value="Thomala">Thomala</option>
+        <option value="Kalyanam">Kalyanam</option>
+        <option value="Bramhotsavam">Bramhotsavam</option>
+      </select><br>
+      <button type="submit" class="button">Book Ticket</button>
+    </form>
+  </div>
+{% endblock %}

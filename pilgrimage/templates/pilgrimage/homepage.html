@@ -1,12 +1,16 @@
+<!-- pilgrimage/templates/pilgrimage/homepage.html -->
+
 {% extends 'pilgrimage/base.html' %}
 
 {% block title %}Pilgrimage App{% endblock %}
 
 {% block content %}
+  <div class="container">
     <h2>Welcome to the Pilgrimage App</h2>
     <p>Explore the options:</p>
     <ul>
-        <li><a href="{% url 'pilgrimage:user_login' %}">Login</a></li>
-        <li><a href="{% url 'pilgrimage:register' %}">Register</a></li>
+      <li><a href="{% url 'pilgrimage:user_login' %}" class="button">Login</a></li>
+      <li><a href="{% url 'pilgrimage:register' %}" class="button">Register</a></li>
     </ul>
+  </div>
 {% endblock %}

@@ -1,8 +1,32 @@
+<!-- pilgrimage/templates/pilgrimage/about.html -->
+
 {% extends 'pilgrimage/base.html' %}
 
 {% block title %}About{% endblock %}
 
+{% block additional_css %}
+    <style>
+        /* Additional styles for the About page */
+        main {
+            background-color: #f4f4f4; /* Light background color */
+            padding: 20px;
+            margin-top: 70px; /* Adjusted margin for content below the navbar */
+        }
+
+        h2 {
+            color: #333; /* Dark text color */
+        }
+
+        p {
+            color: #555; /* Slightly darker text color */
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-    <h1>About Our App</h1>
-    <p>This is a sample tickets booking app.</p>
+    <main>
+        <h1>About Pilgrimage App</h1>
+        <p>Welcome to the Pilgrimage App. Explore and enjoy your journey with us.</p>
+        <!-- Add more content as needed -->
+    </main>
 {% endblock %}

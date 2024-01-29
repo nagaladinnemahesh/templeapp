@@ -1,16 +1,57 @@
-{% load static %}
+<!-- pilgrimage/templates/pilgrimage/base.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Pilgrimage App{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% static 'pilgrimage/css/styles.css' %}">
     {% block additional_css %}{% endblock %}
+    <style>
+        /* Add this style for the navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a1a; /* Dark background color */
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+        }
+
+        nav h1 {
+            margin: 0;
+            color: #fff; /* Text color */
+            font-size: 1.5em;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
 </head>
 <body>
     <nav>
+        <h1>Pilgrimage App</h1>
         <ul>
             <li><a href="{% url 'pilgrimage:homepage' %}">Home</a></li>
             {% if user.is_authenticated %}
@@ -28,5 +69,6 @@
     <div class="container">
         {% block content %}{% endblock %}
     </div>
+    <!-- ... rest of the template ... -->
 </body>
 </html>

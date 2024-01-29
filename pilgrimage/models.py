@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -25,7 +26,7 @@ class Pilgrim(models.Model):
         return f'{self.name} - {self.service}'
 
 class Booking(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="bookings")
     name = models.CharField(max_length=100, default="Your Name")  # Add this line
     email = models.EmailField(default="Your Email")
     date_of_visit = models.DateField(default=timezone.now)

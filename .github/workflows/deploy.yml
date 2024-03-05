@@ -12,16 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
-      - name: Uninstall conflicting package
-        run: |
-          sudo apt-get purge containerd
-          sudo apt-get update
-        continue-on-error: true
 
-      - name: Install Docker
-        run: sudo apt-get install -y docker.io
-      
       - name: Authenticate with GitHub
         run: echo "Authenticated with GitHub"
       

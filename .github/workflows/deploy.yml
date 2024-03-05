@@ -32,7 +32,7 @@ jobs:
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         port: ${{ secrets.EC2_SSH_PORT }}
         script: |
-          sudo apt-get remove containerd containerd.io -y
+          sudo apt-get remove containerd.io
           sudo apt-get install -f -y
 
     - name: SSH into EC2 and deploy Docker container

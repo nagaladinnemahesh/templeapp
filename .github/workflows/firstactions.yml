@@ -17,7 +17,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Build Docker image
-      working-directory: /https://github.com/nagaladinnemahesh/templeapp/
+      working-directory: dockerfile
       run: docker build -t templeimage_actions .
     
     - name: Log in to Docker Hub

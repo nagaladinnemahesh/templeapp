@@ -7,6 +7,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -17,8 +18,7 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t templeimage_actions .
-      working-directory: templeapp
-
+    
     - name: Log in to Docker Hub
       run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 

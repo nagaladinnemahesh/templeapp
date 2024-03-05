@@ -24,6 +24,17 @@ jobs:
       run: |
         docker pull mahesh0404/templeimage_actions:latest
 
+    - name: SSH into EC2 and troubleshoot package conflicts
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_PRIVATE_KEY }}
+        port: ${{ secrets.EC2_SSH_PORT }}
+        script: |
+          sudo apt-get remove containerd containerd.io -y
+          sudo apt-get install -f -y
+
     - name: SSH into EC2 and deploy Docker container
       uses: appleboy/ssh-action@master
       with:
@@ -34,5 +45,4 @@ jobs:
         script: |
           docker stop templeimage_actions || true
           docker rm templeimage_actions || true
-          docker run -d --templeimage_actions -p 80:80 mahesh0404/templeimage_latest:80
-          
+          docker run -d --name templeimage_actions -p 80:80 mahesh0404/templeimage_actions:latest
